@@ -1,12 +1,11 @@
 import React from 'react'
 import AppRoutes from './AppRoutes'
-import ResponsiveAppBar from '../components/Navbar'
+import Navbar from '../components/Navbar'
 
 export default function App() {
     return (
-        <>
-            <ResponsiveAppBar />
-            <AppRoutes />
-        </>
+        <div>
+            <Navbar render={<AppRoutes />} />
+        </div>
     )
 }

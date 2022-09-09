@@ -1,17 +1,29 @@
 import { makeStyles } from "@mui/styles";
 
-const NavbarStyle = makeStyles({
-    navbarFont: {
-        mr: 2,
-        display: { xs: 'none', md: 'flex' },
-        fontFamily: 'monospace',
-        fontWeight: 700,
-        letterSpacing: '.3rem',
-        color: 'inherit',
+const Sidebar = makeStyles({
+    sidebarIcon: {
+        color: 'black',
+
+    },
+    sidebarIconButton: {
+        minHeight: 48,
+        justifyContent: 'center',
+        px: 2.5,
+        textDecoration: 'none'
+    },
+    sidebarListItemButton: {
+        minWidth: 0,
+        minHeight: 48,
+        justifyContent: 'center',
+        px: 2.5,
+        '&:hover': {
+            color: 'white'
+        }
+    },
+    sidebarListItemText: {
+        color: 'black',
         textDecoration: 'none',
-
     }
-
 })
 
-export { NavbarStyle }
+export { Sidebar }
