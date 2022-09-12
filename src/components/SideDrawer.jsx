@@ -12,13 +12,14 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import HomeIcon from '@mui/icons-material/Home';
 import MovingIcon from '@mui/icons-material/Moving';
+import SettingsIcon from '@mui/icons-material/Settings';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { Sidebar } from '../utils/Styles';
+import { Styles } from '../utils/Styles';
 
 export default function SideDreawer(props) {
-
-    const classes = Sidebar()
+    const classes = Styles()
     const [openMenu, setOpenMenu] = useState(false);
     const [openReservation, setOpenReservation] = useState(false);
     const [openBillings, setOpenBillings] = useState(false);
@@ -53,12 +54,33 @@ export default function SideDreawer(props) {
 
     return (
         <List>
+            <ListItem disablePadding sx={{ display: 'block' }} component={Link} to={'/'}>
+                <ListItemButton
+                    className={classes.sidebarListItemButton}
+                    sx={{
+                        justifyContent: props.open ? 'initial' : 'center',
+
+                    }}
+                >
+                    <ListItemIcon
+                        sx={{
+                            minWidth: 0,
+                            mr: props.open ? 3 : 'auto',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <HomeIcon className={classes.sidebarIcon} />
+                    </ListItemIcon>
+                    <ListItemText className={classes.sidebarListItemText} primary='Inicio' sx={{ opacity: props.open ? 1 : 0 }} />
+                </ListItemButton>
+            </ListItem>
+
             <ListItem disablePadding sx={{ display: 'block' }} component={Link} to={'pedidos'}>
                 <ListItemButton
                     className={classes.sidebarListItemButton}
                     sx={{
-                        // justifyContent: open ? 'initial' : 'center',
                         justifyContent: props.open ? 'initial' : 'center',
+
                     }}
                 >
                     <ListItemIcon
@@ -85,10 +107,10 @@ export default function SideDreawer(props) {
                     <RestaurantMenuIcon className={classes.sidebarIcon} />
                 </ListItemIcon>
                 <ListItemText primary='Menú' className={classes.sidebarListItemText} sx={{ opacity: props.open ? 1 : 0 }} ></ListItemText>
-                {openMenu ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
+                {(props.open && openMenu) ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
             </ListItemButton>
 
-            <Collapse in={openMenu} timeout='auto' ounmountOnExit>
+            <Collapse in={props.open ? openMenu : false} timeout='auto'>
                 <List component='div' disablePadding >
                     {listMenuOptions.map(({ id, label, path }) => (
                         <ListItemButton sx={{ pl: 4 }} key={id} component={Link} to={path} >
@@ -124,15 +146,15 @@ export default function SideDreawer(props) {
                     sx={{
                         minWidth: 0,
                         mr: props.open ? 3 : 'auto',
-                        justifyContent: 'center',
+                        justifyContent: props.open ? 'initial' : 'center'
                     }}>
                     <CalendarMonthIcon className={classes.sidebarIcon} />
                 </ListItemIcon>
                 <ListItemText primary='Reservas' className={classes.sidebarListItemText} sx={{ opacity: props.open ? 1 : 0 }} ></ListItemText>
-                {openReservation ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
+                {(props.open && openReservation) ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
             </ListItemButton>
 
-            <Collapse in={openReservation} timeout='auto' ounmountOnExit>
+            <Collapse in={props.open ? openReservation : false} timeout='auto'>
                 <List component='div' disablePadding >
                     {listReservationOptions.map(({ id, label, path }) => (
                         <ListItemButton sx={{ pl: 4 }} key={id} component={Link} to={path} >
@@ -147,16 +169,16 @@ export default function SideDreawer(props) {
                     sx={{
                         minWidth: 0,
                         mr: props.open ? 3 : 'auto',
-                        justifyContent: 'center',
+                        justifyContent: props.open ? 'initial' : 'center'
                     }}
                 >
                     <MovingIcon className={classes.sidebarIcon} />
                 </ListItemIcon>
-                <ListItemText primary='Información contable' className={classes.sidebarListItemText} sx={{ opacity: props.open ? 1 : 0 }} ></ListItemText>
-                {openBillings ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
+                <ListItemText primary='Información contable' className={classes.sidebarListItemText} sx={{ opacity: props.open ? 1 : 0 }}></ListItemText>
+                {(props.open && openBillings) ? <ExpandLess /> : <ExpandMore sx={{ opacity: props.open ? 1 : 0 }} />}
             </ListItemButton>
 
-            <Collapse in={openBillings} timeout='auto' ounmountOnExit>
+            <Collapse in={props.open ? openBillings : false} timeout='auto'>
                 <List component='div' disablePadding >
                     {listBillingsOptions.map(({ id, label, path }) => (
                         <ListItemButton sx={{ pl: 4 }} key={id} component={Link} to={path} >
@@ -165,6 +187,30 @@ export default function SideDreawer(props) {
                     ))}
                 </List>
             </Collapse>
+
+            {props.open &&
+                <ListItem disablePadding sx={{ display: 'block' }} component={Link} to={'/'}>
+                    <ListItemButton
+                        className={classes.sidebarListItemButton}
+                        sx={{
+                            justifyContent: props.open ? 'initial' : 'center',
+
+                        }}
+                    >
+                        <ListItemIcon
+                            sx={{
+                                minWidth: 0,
+                                mr: props.open ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <SettingsIcon className={classes.sidebarIcon} />
+                        </ListItemIcon>
+                        <ListItemText className={classes.sidebarListItemText} primary='Configuración' sx={{ opacity: props.open ? 1 : 0 }} />
+                    </ListItemButton>
+                </ListItem>
+            }
+
         </List>
     )
 }
