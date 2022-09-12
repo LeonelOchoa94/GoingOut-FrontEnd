@@ -2,11 +2,9 @@ import { React, useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import {
     Box,
-    CssBaseline,
     Divider,
     IconButton,
     Toolbar,
-    Typography,
 } from '@mui/material/';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
@@ -14,6 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SideDreawer from './SideDrawer';
+import { Styles } from '../utils/Styles';
+import GOING_OUT_LOGO from './../utils/images/GoingOutManagement.png';
 
 const drawerWidth = 270;
 const openedMixin = (theme) => ({
@@ -82,6 +82,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function Navbar(props) {
+    const classes = Styles()
     const theme = useTheme();
     const [open, setOpen] = useState(false);
 
@@ -95,8 +96,10 @@ export default function Navbar(props) {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open}>
+            <AppBar open={open} style={{
+                backgroundColor: '#ffffff',
+                position: 'fixed'
+            }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -104,22 +107,32 @@ export default function Navbar(props) {
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
+                            display: 'block',
                             marginRight: 5,
                             ...(open && { display: 'none' }),
                         }}
                     >
-                        <MenuIcon />
+                        <MenuIcon className={classes.sidebarIcon} />
                     </IconButton>
-                    {/* PONER LOGO */}
-                    <Typography variant="h6" noWrap component="div">
-                        LOGO GOING OUT
-                    </Typography>
+                    <Box
+                        component='img'
+                        alt='GoingOut'
+                        src={GOING_OUT_LOGO}
+                        sx={{
+                            margin: 'auto',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '200px',
+                            height: '62px'
+                        }}
+                    />
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <ChevronRightIcon style={{ color: '#000000' }} /> : <ChevronLeftIcon style={{ color: 'black' }} />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />

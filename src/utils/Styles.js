@@ -1,29 +1,36 @@
 import { makeStyles } from "@mui/styles";
 
-const Sidebar = makeStyles({
+const Styles = makeStyles({
+    appBarComponent: {
+        backgroundColor: '#ccc0c8',
+        position: 'fixed'
+    },
     sidebarIcon: {
-        color: 'black',
-
+        color: '#000000',
     },
     sidebarIconButton: {
         minHeight: 48,
         justifyContent: 'center',
         px: 2.5,
-        textDecoration: 'none'
+        textDecoration: 'none',
     },
     sidebarListItemButton: {
         minWidth: 0,
         minHeight: 48,
         justifyContent: 'center',
         px: 2.5,
-        '&:hover': {
-            color: 'white'
-        }
     },
     sidebarListItemText: {
-        color: 'black',
+        color: '#000000',
         textDecoration: 'none',
+    },
+    homeCard: {
+        alignSelf: 'center',
+        height: '400px',
+        width: '400px',
+        justifyContent: 'center',
+
     }
 })
 
-export { Sidebar }
+export { Styles }
