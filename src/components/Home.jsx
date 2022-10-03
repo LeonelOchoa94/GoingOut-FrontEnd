@@ -54,7 +54,7 @@ function Home() {
     }
 
     const badgeStyle = {
-        "& .MuiBadge-badge": {
+        "&.MuiBadge-badge": {
             color: 'yellow',
             backgroundColor: '#686868',
             right: '50px',
