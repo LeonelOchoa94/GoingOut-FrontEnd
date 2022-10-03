@@ -12,7 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import SideDreawer from './SideDrawer';
-import { Styles } from '../utils/Styles';
+import { SideDrawerStyles } from '../utils/styles/SideDrawerStyles';
 import GOING_OUT_LOGO from './../utils/images/GoingOutManagement.png';
 
 const drawerWidth = 270;
@@ -82,7 +82,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function Navbar(props) {
-    const classes = Styles()
+    const classes = SideDrawerStyles()
     const theme = useTheme();
     const [open, setOpen] = useState(false);
 

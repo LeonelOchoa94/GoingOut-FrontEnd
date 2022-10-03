@@ -16,10 +16,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import MovingIcon from '@mui/icons-material/Moving';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { Styles } from '../utils/Styles';
+import { SideDrawerStyles } from '../utils/styles/SideDrawerStyles';
 
 export default function SideDreawer(props) {
-    const classes = Styles()
+    const classes = SideDrawerStyles()
     const [openMenu, setOpenMenu] = useState(false);
     const [openReservation, setOpenReservation] = useState(false);
     const [openBillings, setOpenBillings] = useState(false);

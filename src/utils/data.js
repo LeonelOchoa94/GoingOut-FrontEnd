@@ -1,16 +1,26 @@
 const dataTables = [
     { id: 0, state: true, },
     { id: 1, state: false, },
-    { id: 2, state: false, },
+    { id: 2, state: true, },
     { id: 3, state: false, },
-    { id: 4, state: false, },
+    { id: 4, state: true, },
     { id: 5, state: false, },
     { id: 6, state: false, },
-    { id: 7, state: false, },
+    { id: 7, state: true, },
     { id: 8, state: true, },
     { id: 9, state: true, },
-    { id: 10, state: true, },
-    { id: 11, state: false, }
+    { id: 10, state: false, },
+    { id: 11, state: false, },
+    { id: 12, state: false, },
+    { id: 13, state: false, },
+    { id: 14, state: false, },
+    { id: 15, state: true, },
+    { id: 16, state: false, },
+    { id: 17, state: true, },
+    { id: 18, state: false, },
+    { id: 19, state: false, },
+    { id: 20, state: true, },
+    { id: 21, state: false, },
 ]
 
 export default dataTables 

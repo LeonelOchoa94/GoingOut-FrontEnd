@@ -1,10 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-const Styles = makeStyles({
-    appBarComponent: {
-        backgroundColor: '#ccc0c8',
-        position: 'fixed'
-    },
+const SideDrawerStyles = makeStyles({
     sidebarIcon: {
         color: '#000000',
     },
@@ -24,13 +20,6 @@ const Styles = makeStyles({
         color: '#000000',
         textDecoration: 'none',
     },
-    homeCard: {
-        alignSelf: 'center',
-        height: '400px',
-        width: '400px',
-        justifyContent: 'center',
-
-    }
 })
 
-export { Styles }
+export { SideDrawerStyles }
