@@ -18,6 +18,7 @@ import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import { HomeStyles } from '../utils/styles/HomeStyles';
 import HomeCard from '../utils/func/HomeCard';
 import dataTables from './../utils/data.js';
+import axios from "axios";
 
 
 // const minDate = dayjs('2020-01-01T00:00:00.000');
@@ -30,19 +31,33 @@ function Home() {
     // -------------------
     const [count, setCount] = useState(0)
     // -------------------
+    const [mesas, setMesas] = useState([])
+    const [error, setError] = useState([]);
+    const [Contmesas, setContMesas] = useState([])
+
 
     useEffect(() => {
         getData()
     }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
-    const getData = () => {
+    useEffect(() => {
+        axios.get('https://localhost:7117/api/Tables')
+          .then(result => {
+            setMesas(result.data)       
+          }).catch(error => {
+            setError(error);
+          })
+      }, [setMesas]);
+
+    const getData = () => {        
         let availableTable = 0
         let occupiedTable = 0
-        for (let i = 0; i < dataTables.length; i++) {
-            if (dataTables[i].state === true) {
+        for (let i = 0; i < mesas.length; i++) {
+            if (mesas[i].active === false) {
                 availableTable += 1
+                console.log(mesas[i].amount_People)
             } else {
-                if (dataTables[i].state === false) {
+                if (mesas[i].active === true) {
                     occupiedTable += 1
                 }
             }
@@ -67,13 +82,13 @@ function Home() {
     const imprime = () => {
         console.log(info)
     }
-
+    
     return (
         <div>
             <Helmet>
                 <title>GO Management | Home</title>
             </Helmet>
-
+            
             <Grid
                 container
                 className={classes.homeGrid}
@@ -93,11 +108,11 @@ function Home() {
                                     <Pie
                                         data={info}
                                         cx={120}
-                                        cy={200}
+                                        cy={120}
                                         innerRadius={60}
                                         outerRadius={80}
-                                        // fill={info.color}
-                                        paddingAngle={5}
+                                        //fill={info.color}
+                                        paddingAngle={8}
                                         dataKey="value"
                                     >
                                     </Pie>
@@ -109,7 +124,6 @@ function Home() {
                     />
 
                 </Grid>
-
 
                 <Grid item lg={6} sm={3} xs={12}>
 
