@@ -1,15 +1,5 @@
-import {
-    React,
-    useState,
-    useEffect
-} from 'react';
+import {React,useState,useEffect} from 'react';
 import Helmet from 'react-helmet';
-// import dayjs, { Dayjs } from 'dayjs';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { CalendarPicker } from '@mui/x-date-pickers/CalendarPicker';
-// import { MonthPicker } from '@mui/x-date-pickers/MonthPicker';
-// import { YearPicker } from '@mui/x-date-pickers/YearPicker';
 import { Badge, badgeClasses, Box, Grid, Typography } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
@@ -17,35 +7,35 @@ import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import { HomeStyles } from '../utils/styles/HomeStyles';
 import HomeCard from '../utils/func/HomeCard';
-import dataTables from './../utils/data.js';
 import axios from "axios";
+import CustomCalendar from "./Reservas/CustomCalendar";
+import Calendar from "./Reservas/Calendar";
+import Reservas from "./Reservas/Reservas";
 
+import { WbSunny } from '@mui/icons-material';
 
-// const minDate = dayjs('2020-01-01T00:00:00.000');
-// const maxDate = dayjs('2027-01-01T00:00:00.000');
 
 function Home() {
     const classes = HomeStyles()
-    // const [date, setDate] = useState < Dayjs | null > (dayjs())
     const [info, setInfo] = useState({})
     // -------------------
     const [count, setCount] = useState(0)
     // -------------------
     const [mesas, setMesas] = useState([])
-    const [error, setError] = useState([]);
-    const [Contmesas, setContMesas] = useState([])
 
 
     useEffect(() => {
         getData()
     }, [])// eslint-disable-line react-hooks/exhaustive-deps
 
+    console.log(info)
     useEffect(() => {
         axios.get('https://localhost:7117/api/Tables')
           .then(result => {
             setMesas(result.data)       
-          }).catch(error => {
-            setError(error);
+            console.log(result.data);
+          }).catch(e => {
+            console.log(e);
           })
       }, [setMesas]);
 
@@ -77,10 +67,6 @@ function Home() {
             height: 25,
             borderRadius: '50%'
         }
-    }
-
-    const imprime = () => {
-        console.log(info)
     }
     
     return (
@@ -124,9 +110,7 @@ function Home() {
                     />
 
                 </Grid>
-
                 <Grid item lg={6} sm={3} xs={12}>
-
                     <HomeCard
                         header={'Pedidos en mesa'}
                         body={
@@ -144,38 +128,23 @@ function Home() {
                     />
                 </Grid>
                 <Grid item lg={6} sm={3} xs={12}>
-                    <HomeCard
+                    {/* <HomeCard
                         header={'Reservas'}
-                        // body={
-                        //     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        //         <Grid container spacing={3}>
-                        //             <Grid item xs={12} md={6}>
-                        //                 <CalendarPicker date={date} onChange={(newDate) => setDate(newDate)} />
-                        //             </Grid>
-                        //             <Grid item xs={12} md={6}>
-                        //                 <MonthPicker
-                        //                     date={date}
-                        //                     minDate={minDate}
-                        //                     maxDate={maxDate}
-                        //                     onChange={(newDate) => setDate(newDate)}
-                        //                 />
-                        //             </Grid>
-                        //             <Grid item xs={12} md={6}>
-                        //                 <YearPicker
-                        //                     date={date}
-                        //                     minDate={minDate}
-                        //                     maxDate={maxDate}
-                        //                     onChange={(newDate) => setDate(newDate)}
-                        //                 />
-                        //             </Grid>
-                        //         </Grid>
-                        //     </LocalizationProvider>
-                        // }
+                        
+                        body={ */}
+                            <Box
+                                 style={{  height: '300px', width:'500px',marginLeft: '22%'}}
+                            >
 
+                                {/* <CustomCalendar/> */}
+                                <Reservas/>
+                            </Box>
+                        {/* }
                         path={'/'}
-                    />
+                        /> */}
 
                 </Grid>
+
                 <Grid item lg={6} sm={3} xs={12}>
                     <HomeCard
                         header={'Facturaciones'}
@@ -192,9 +161,9 @@ function Home() {
             {/* <button onClick={() => imprime()}>
                 Imprime!
             </button> */}
-            <button onClick={() => setCount(count + 1)}>
+            {/* <button onClick={() => setCount(count + 1)}>
                 Notificación
-            </button>
+            </button> */}
         </div >
     )
 }
