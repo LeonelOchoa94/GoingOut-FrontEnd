@@ -1,0 +1,70 @@
+.nav {
+  background: rgb(252, 213, 162);
+  background: linear-gradient(90deg, rgba(252, 213, 162, 1) 0%, rgba(243, 113, 208, 1) 100%);
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: rgb(252, 213, 162);
+  background: linear-gradient(90deg, rgba(252, 213, 162, 1) 0%, rgba(255, 211, 208, 1) 100%);
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-title {
+  font-size: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.navegador {
+  padding-top: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: start;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.navegador ul li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  margin-right: 5px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.navegador li a {
+  text-decoration: none;
+  color: black;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navegador li a:hover,
+a:focus {
+  color: #fa6257;
+  font-weight: bold;
+  background-size: 100% 2px;
+}
+
+.buttons {
+  padding-top: 10px;
+}
+
+.buttons button {
+  margin-right: 10px;
+}
