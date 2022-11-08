@@ -4,7 +4,7 @@ import './styles.css';
 export const Navbar = () => {
   return (
     <>
-      <nav className='nav container'>
+      <nav position='fixed' className='nav container'>
         <h3 className='nav-title'>GoingOut</h3>
         <div className='navegador'>
           <ul>
