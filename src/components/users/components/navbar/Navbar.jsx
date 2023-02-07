@@ -1,5 +1,15 @@
+import { Container } from '@mui/material';
 import React from 'react';
 
 export const Navbar = () => {
-  return <div>Navbar</div>;
+  return (
+    <>
+      <>
+        <h3>LOGO</h3>
+        <h4>Quienes somos</h4>
+        <h4>Quienes somos</h4>
+        <h4>Quienes somos</h4>
+      </>
+    </>
+  );
 };
