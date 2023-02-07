@@ -1,5 +1,10 @@
 import React from 'react';
+import { Navbar } from './components/navbar/Navbar';
 
 export const UsersPage = () => {
-  return <div>UsersPage</div>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 };
