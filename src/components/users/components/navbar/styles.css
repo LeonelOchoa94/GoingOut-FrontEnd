@@ -1,0 +1,9 @@
+.menu[data-animation='bonus'] a::before {
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+}
+.menu[data-animation='bonus'] a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
+}
