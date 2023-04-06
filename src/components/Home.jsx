@@ -42,14 +42,14 @@ function Home() {
 
     useEffect(() => {
         axios.get('https://localhost:7117/api/Tables')
-          .then(result => {
-            setMesas(result.data)       
-          }).catch(error => {
-            setError(error);
-          })
-      }, [setMesas]);
+            .then(result => {
+                setMesas(result.data)
+            }).catch(error => {
+                setError(error);
+            })
+    }, [setMesas]);
 
-    const getData = () => {        
+    const getData = () => {
         let availableTable = 0
         let occupiedTable = 0
         for (let i = 0; i < mesas.length; i++) {
@@ -82,13 +82,13 @@ function Home() {
     const imprime = () => {
         console.log(info)
     }
-    
+
     return (
         <div>
             <Helmet>
                 <title>GO Management | Home</title>
             </Helmet>
-            
+
             <Grid
                 container
                 className={classes.homeGrid}
@@ -120,7 +120,7 @@ function Home() {
                             </Box>
                         }
 
-                        path={'/'}
+                        path={'/ocupacion-mesas'}
                     />
 
                 </Grid>
@@ -189,12 +189,12 @@ function Home() {
 
             </Grid>
 
-            {/* <button onClick={() => imprime()}>
-                Imprime!
-            </button> */}
             <button onClick={() => setCount(count + 1)}>
                 Notificación
             </button>
+            {/* <button onClick={() => imprime()}>
+                Imprime!
+            </button> */}
         </div >
     )
 }

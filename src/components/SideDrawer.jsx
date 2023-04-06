@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import * as React from 'react';
 import {
     Collapse,
     List,
@@ -20,9 +20,9 @@ import { SideDrawerStyles } from '../utils/styles/SideDrawerStyles';
 
 export default function SideDreawer(props) {
     const classes = SideDrawerStyles()
-    const [openMenu, setOpenMenu] = useState(false);
-    const [openReservation, setOpenReservation] = useState(false);
-    const [openBillings, setOpenBillings] = useState(false);
+    const [openMenu, setOpenMenu] = React.useState(false);
+    const [openReservation, setOpenReservation] = React.useState(false);
+    const [openBillings, setOpenBillings] = React.useState(false);
 
     const listMenuOptions = [
         { id: 0, label: 'Platos', path: 'menu-platos', },
@@ -59,7 +59,6 @@ export default function SideDreawer(props) {
                     className={classes.sidebarListItemButton}
                     sx={{
                         justifyContent: props.open ? 'initial' : 'center',
-
                     }}
                 >
                     <ListItemIcon
@@ -210,7 +209,6 @@ export default function SideDreawer(props) {
                     </ListItemButton>
                 </ListItem>
             }
-
         </List>
     )
 }
