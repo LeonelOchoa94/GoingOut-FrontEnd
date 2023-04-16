@@ -14,24 +14,17 @@ export default function AppRoutes() {
                 <Route path="passrecovery/:token" element={<NewPassword />} />
                 <Route path="passconfirm/:id" element={<ConfirmAccount />} />
                 <Route path='/home' element={
-                    <Navbar>
-                        <Home />
-                    </Navbar>
+                    <Navbar render={<Home />} />
+
                 } />
                 <Route path='/pedidos' element={
-                    <Navbar>
-                        <Home />
-                    </Navbar>
+                    <Navbar render={<Home />} />
                 } />
                 <Route path='/menu' element={
-                    <Navbar>
-                        <Home />
-                    </Navbar>
+                    <Navbar render={<Home />} />
                 } />
                 <Route path='/camareros' element={
-                    <Navbar>
-                        <Home />
-                    </Navbar>
+                    <Navbar render={<Home />} />
                 } />
             </Routes>
         </div>
